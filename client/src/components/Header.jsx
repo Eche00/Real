@@ -40,9 +40,9 @@ function Header() {
               About
             </p>
           </NavLink>
-          <Link to="/signin">
+          <Link to="/signup">
             <button className="  bg-blue-400  mr-2  px-5 py-2  rounded-full text-white cursor-pointer">
-              SignIn
+              SignUp
             </button>
           </Link>
         </nav>
