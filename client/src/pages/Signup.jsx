@@ -1,11 +1,13 @@
 import React, { useState } from "react";
 import { ArrowBack } from "@mui/icons-material";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 function Signup() {
   const [formData, setFormData] = useState({});
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(false);
+
+  const navigate = useNavigate();
 
   const handleOnchange = (e) => {
     setFormData({
@@ -31,8 +33,9 @@ function Signup() {
         setError(data.message);
         return;
       }
-
+      setError(null);
       setLoading(false);
+      navigate("/signin");
     } catch (error) {
       setLoading(false);
       setError(error.message);
@@ -76,12 +79,14 @@ function Signup() {
           <button
             disabled={loading}
             className="bg-blue-500 text-2xl text-white py-2 px-20 rounded-full shadow-md shadow-gray-600 my-5 hover:bg-blue-400 disabled:opacity-90 uppercase">
-            {loading ? "Loading..." : "sign up"}
+            <p>{loading ? "Loading..." : "sign up"}</p>
           </button>
+          {error && (
+            <p className=" text-sm text-red-500 font-bold text-center">
+              {error}
+            </p>
+          )}
           <p className=" gap-5 flex items-center justify-center font-serif text-gray-400">
-            {error && (
-              <p className=" text-sm text-red-500 font-bold">{error}</p>
-            )}
             <span>Already have an account? </span>{" "}
             <Link to="/signin" className=" text-blue-500 hover:underline">
               SignIn
