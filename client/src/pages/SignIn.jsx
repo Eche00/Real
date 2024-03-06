@@ -25,12 +25,14 @@ function SignIn() {
             className=" rounded-full border border-blue-500 border-solid p-3 sm:w-[60%]  w-[80%] shadow-md shadow-gray-400 outline-none"
             placeholder="Password"
           />
-          <button className="bg-blue-500 text-2xl text-white py-2 px-20 rounded-full shadow-md shadow-gray-600 my-5 hover:bg-blue-400">
-            Submit
+          <button className="bg-blue-500 text-2xl text-white py-2 px-20 rounded-full shadow-md shadow-gray-600 my-5 hover:opacity-[90%] uppercase">
+            Sign in
           </button>
-          <p className=" gap-5 flex items-center justify-center font-serif text-gray-400">
+          <p className=" gap-3 flex items-center justify-center font-serif text-gray-400">
             <span>Already have an account? </span>{" "}
-            <Link to="/signup" className=" text-blue-500 hover:underline">
+            <Link
+              to="/signup"
+              className=" text-blue-500 hover:underline text-sm">
               SignIn
             </Link>{" "}
           </p>
