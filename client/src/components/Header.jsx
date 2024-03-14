@@ -1,8 +1,10 @@
-import React from "react";
-import { Search } from "@mui/icons-material";
+import React, { useState } from "react";
+import { ArrowBack, ExitToApp, Search } from "@mui/icons-material";
 import { Link, NavLink } from "react-router-dom";
 
 function Header() {
+  let [dropDown, setDropDown] = useState(false);
+
   return (
     <div className=" w-[100%] shadow-sm shadow-blue-500 py-3 sm:px-0 px-5">
       <header className="  max-w-7xl mx-auto flex justify-between items-center">
@@ -24,7 +26,52 @@ function Header() {
             </button>
           </section>
         </div>
-        <button className="sm:hidden text-3xl">&#9776;</button>
+        <button
+          className="sm:hidden text-3xl relative"
+          onClick={() => setDropDown(!dropDown)}>
+          &#9776;
+        </button>
+        {dropDown && (
+          <div className=" absolute bottom-0 left-0 right-0 top-0 bg-black bg-opacity-[80%] sm:hidden flex">
+            <div className=" absolute right-0 top-0 bottom-0 w-[40%] bg-slate-200">
+              <nav className=" flex flex-col py-0 justify-center text-sm  font-bold ">
+                <NavLink
+                  to="/"
+                  className={({ isActive }) =>
+                    isActive ? "text-blue-500" : ""
+                  }>
+                  <p
+                    className=" border border-y border-x-0 border-gray-400 cursor-pointer   w-[100%] p-3 "
+                    onClick={() => setDropDown(!dropDown)}>
+                    Home
+                  </p>
+                </NavLink>
+                <NavLink
+                  to="/about"
+                  className={({ isActive }) =>
+                    isActive ? "text-blue-500" : ""
+                  }>
+                  <p
+                    className=" cursor-pointer   w-[100%] p-3"
+                    onClick={() => setDropDown(!dropDown)}>
+                    About
+                  </p>
+                </NavLink>
+                <Link to="/signup">
+                  <p className=" border  border-x-0 border-gray-400 cursor-pointer   w-[100%] p-3">
+                    SignUp
+                  </p>
+                </Link>
+              </nav>
+              <button
+                onClick={() => setDropDown(!dropDown)}
+                className=" absolute bottom-2 right-2">
+                <ExitToApp />
+              </button>
+            </div>
+          </div>
+        )}
+
         <nav className=" sm:flex items-center text-sm gap-3 font-bold hidden">
           <NavLink
             to="/"
