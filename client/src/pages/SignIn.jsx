@@ -7,6 +7,7 @@ import {
   signInSuccess,
   signInFaliure,
 } from "../redux/user/userSlice";
+import Gauth from "../components/Gauth";
 
 function SignIn() {
   const [formData, setFormData] = useState({});
@@ -75,6 +76,7 @@ function SignIn() {
           <button className="bg-blue-500 text-2xl text-white py-2 px-20 rounded-full shadow-md shadow-gray-600 my-5 hover:opacity-[90%] uppercase">
             <p>{loading ? "Loading..." : "sign in"}</p>
           </button>
+          <Gauth />
           {error && (
             <p className=" text-sm text-red-500 font-bold text-center">
               {error}

@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { ArrowBack } from "@mui/icons-material";
 import { Link, useNavigate } from "react-router-dom";
+import Gauth from "../components/Gauth";
 
 function Signup() {
   const [formData, setFormData] = useState({});
@@ -81,6 +82,8 @@ function Signup() {
             className="bg-blue-500 text-2xl text-white py-2 px-20 rounded-full shadow-md shadow-gray-600 my-5 hover:bg-blue-400 disabled:opacity-90 uppercase">
             <p>{loading ? "Loading..." : "sign up"}</p>
           </button>
+
+          <Gauth />
           {error && (
             <p className=" text-sm text-red-500 font-bold text-center">
               {error}
