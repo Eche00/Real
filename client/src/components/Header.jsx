@@ -1,9 +1,12 @@
 import React, { useState } from "react";
 import { ArrowBack, ExitToApp, Search } from "@mui/icons-material";
 import { Link, NavLink } from "react-router-dom";
+import { useSelector } from "react-redux";
+import { imageListClasses } from "@mui/material";
 
 function Header() {
   let [dropDown, setDropDown] = useState(false);
+  const { currentUser } = useSelector((state) => state.user);
 
   return (
     <div className=" w-[100%] shadow-sm shadow-blue-500 py-3 sm:px-0 px-5">
@@ -57,10 +60,21 @@ function Header() {
                     About
                   </p>
                 </NavLink>
-                <Link to="/signup">
-                  <p className=" border  border-x-0 border-gray-400 cursor-pointer   w-[100%] p-3">
-                    SignUp
-                  </p>
+                <Link to="/profile">
+                  {currentUser ? (
+                    <div className="flex  justify-between items-center border  border-x-0 border-gray-400 cursor-pointer   w-[100%] p-3">
+                      <p>Profile</p>
+                      <img
+                        className=" rounded-full h-5 w-[20px] object-cover"
+                        src={currentUser.avatar}
+                        alt="profile"
+                      />{" "}
+                    </div>
+                  ) : (
+                    <p className=" border  border-x-0 border-gray-400 cursor-pointer   w-[100%] p-3">
+                      SignUp
+                    </p>
+                  )}
                 </Link>
               </nav>
               <button
@@ -87,10 +101,18 @@ function Header() {
               About
             </p>
           </NavLink>
-          <Link to="/signup">
-            <button className="  bg-blue-500  mr-2  px-5 py-2  rounded-full text-white cursor-pointer">
-              SignUp
-            </button>
+          <Link to="/profile">
+            {currentUser ? (
+              <img
+                className=" rounded-full h-10 w-[60px] object-cover"
+                src={currentUser.avatar}
+                alt="profile"
+              />
+            ) : (
+              <button className="  bg-blue-500  mr-2  px-5 py-2  rounded-full text-white cursor-pointer">
+                SignUp
+              </button>
+            )}
           </Link>
         </nav>
       </header>
