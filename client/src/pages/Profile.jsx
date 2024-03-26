@@ -1,5 +1,5 @@
 import React, { useRef, useState, useEffect } from "react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import {
   getDownloadURL,
   getStorage,
@@ -7,6 +7,11 @@ import {
   uploadBytesResumable,
 } from "firebase/storage";
 import { app } from "../firebase";
+import {
+  updateUserFaliure,
+  updateUserStart,
+  updateUserSuccess,
+} from "../redux/user/userSlice";
 
 function Profile() {
   const { currentUser } = useSelector((state) => state.user);
@@ -15,9 +20,8 @@ function Profile() {
   const [filePercentage, setFilePercentage] = useState(0);
   const [fileError, setFileError] = useState(false);
   const [formD, setFormD] = useState({});
-
-  console.log(file);
-  console.log(filePercentage);
+  const dispatch = useDispatch();
+  console.log(formD);
 
   // file firebase
   //  allow read;
@@ -50,11 +54,39 @@ function Profile() {
       }
     );
   };
+
+  const handleOnchangeD = (e) => {
+    setFormD({ ...formD, [e.target.id]: e.target.value });
+  };
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    try {
+      dispatch(updateUserStart());
+      const res = await fetch(`/api/user/update/${currentUser._id}`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formD),
+      });
+      const data = await res.json();
+
+      if (data.success === false) {
+        dispatch(updateUserFaliure(data.message));
+        return;
+      }
+      dispatch(updateUserSuccess(data));
+    } catch (error) {
+      dispatch(updateUserFaliure(error.message));
+    }
+  };
   return (
     <div className=" max-w-full mx-auto">
       <h1 className=" text-center text-3xl font-semibold my-7">Profile</h1>
 
-      <form className=" flex flex-col gap-5 w-[60%] mx-auto ">
+      <form
+        onSubmit={handleSubmit}
+        className=" flex flex-col gap-5 w-[60%] mx-auto ">
         <input
           type="file"
           onChange={(e) => setFile(e.target.files[0])}
@@ -70,11 +102,11 @@ function Profile() {
         />
         <p className=" text-sm text-center">
           {fileError ? (
-            <p className=" text-red-700">Image upload not successful</p>
+            <span className=" text-red-700">Image upload not successful</span>
           ) : filePercentage > 0 && filePercentage < 100 ? (
-            <p className=" text-slate-700">{`Image uploading ${filePercentage}%`}</p>
+            <span className=" text-slate-700">{`Image uploading ${filePercentage}%`}</span>
           ) : filePercentage === 100 ? (
-            <p className=" text-green-700">Image uploaded successully!</p>
+            <span className=" text-green-700">Image uploaded successully!</span>
           ) : (
             ""
           )}
@@ -82,20 +114,25 @@ function Profile() {
         <input
           id="useername"
           type="text"
+          defaultValue={currentUser.username}
           placeholder="username"
           className=" rounded-full border border-blue-500 border-solid p-3   w-[100%] shadow-md shadow-gray-400 outline-none mx-auto"
+          onChange={handleOnchangeD}
         />
         <input
           id="email"
           type="email"
+          defaultValue={currentUser.email}
           placeholder="email"
           className=" rounded-full border border-blue-500 border-solid p-3 w-[100%] shadow-md shadow-gray-400 outline-none mx-auto"
+          onChange={handleOnchangeD}
         />
         <input
           id="password"
           type="text"
           placeholder="password"
           className=" rounded-full border border-blue-500 border-solid p-3  w-[100%] shadow-md shadow-gray-400 outline-none mx-auto"
+          onChange={handleOnchangeD}
         />
         <button className=" w-fit bg-blue-500 text-2xl text-white py-2 px-10 rounded-full shadow-md shadow-gray-600  hover:opacity-[90%] uppercase self-center">
           Update
