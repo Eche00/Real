@@ -134,7 +134,7 @@ function Profile() {
           className=" rounded-full border border-blue-500 border-solid p-3  w-[100%] shadow-md shadow-gray-400 outline-none mx-auto"
           onChange={handleOnchangeD}
         />
-        <button className=" w-fit bg-blue-500 text-2xl text-white py-2 px-10 rounded-full shadow-md shadow-gray-600  hover:opacity-[90%] uppercase self-center">
+        <button className=" w-fit bg-blue-500 text-2xl text-white py-2 px-10 rounded-full shadow-md shadow-gray-600  hover:opacity-[90%] active:opacity-[50%] uppercase self-center">
           Update
         </button>
       </form>
@@ -142,7 +142,7 @@ function Profile() {
         <span className=" text-sm font-semibold text-red-700  cursor-pointer">
           Delete account
         </span>
-        <span className=" text-sm font-semibold text-red-700  cursor-pointer">
+        <span className=" text-sm font-semibold text-red-700  cursor-pointer ">
           Sign out
         </span>
       </div>
