@@ -140,10 +140,10 @@ function Profile() {
       </form>
       <div className=" max-w-lg mx-auto flex justify-between mt-5 sm:px-0 px-16">
         <span className=" text-sm font-semibold text-red-700  cursor-pointer">
-          Delete account
+          Delete Account
         </span>
         <span className=" text-sm font-semibold text-red-700  cursor-pointer ">
-          Sign out
+          Sign Out
         </span>
       </div>
     </div>
