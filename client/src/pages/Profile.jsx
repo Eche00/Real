@@ -21,7 +21,6 @@ function Profile() {
   const [fileError, setFileError] = useState(false);
   const [formD, setFormD] = useState({});
   const dispatch = useDispatch();
-  console.log(formD);
 
   // file firebase
   //  allow read;
@@ -70,9 +69,12 @@ function Profile() {
         body: JSON.stringify(formD),
       });
       const data = await res.json();
+      console.log(formD);
 
       if (data.success === false) {
         dispatch(updateUserFaliure(data.message));
+        console.log(formD);
+
         return;
       }
       dispatch(updateUserSuccess(data));
