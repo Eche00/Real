@@ -69,11 +69,9 @@ function Profile() {
         body: JSON.stringify(formD),
       });
       const data = await res.json();
-      console.log(formD);
 
       if (data.success === false) {
         dispatch(updateUserFaliure(data.message));
-        console.log(formD);
 
         return;
       }
@@ -114,7 +112,7 @@ function Profile() {
           )}
         </p>
         <input
-          id="useername"
+          id="username"
           type="text"
           defaultValue={currentUser.username}
           placeholder="username"
