@@ -21,6 +21,7 @@ function Profile() {
   const [fileError, setFileError] = useState(false);
   const [formD, setFormD] = useState({});
   const dispatch = useDispatch();
+  console.log(formD);
 
   // file firebase
   //  allow read;
