@@ -132,7 +132,7 @@ function Profile() {
         />
         <input
           id="password"
-          type="text"
+          type="password"
           placeholder="password"
           className=" rounded-full border border-blue-500 border-solid p-3  w-[100%] shadow-md shadow-gray-400 outline-none mx-auto"
           onChange={handleOnchangeD}
