@@ -14,13 +14,14 @@ import {
 } from "../redux/user/userSlice";
 
 function Profile() {
-  const { currentUser } = useSelector((state) => state.user);
+  const { currentUser, loading, error } = useSelector((state) => state.user);
   const fileRef = useRef(null);
   const [file, setFile] = useState(undefined);
   const [filePercentage, setFilePercentage] = useState(0);
   const [fileError, setFileError] = useState(false);
   const [formD, setFormD] = useState({});
   const dispatch = useDispatch();
+  const [updateSuccess, setUpdateSuccess] = useState(false);
   console.log(formD);
 
   // file firebase
@@ -77,6 +78,7 @@ function Profile() {
         return;
       }
       dispatch(updateUserSuccess(data));
+      setUpdateSuccess(true);
     } catch (error) {
       dispatch(updateUserFaliure(error.message));
     }
@@ -135,9 +137,17 @@ function Profile() {
           className=" rounded-full border border-blue-500 border-solid p-3  w-[100%] shadow-md shadow-gray-400 outline-none mx-auto"
           onChange={handleOnchangeD}
         />
-        <button className=" w-fit bg-blue-500 text-2xl text-white py-2 px-10 rounded-full shadow-md shadow-gray-600  hover:opacity-[90%] active:opacity-[50%] uppercase self-center">
-          Update
+        <button
+          disabled={loading}
+          className=" w-fit bg-blue-500 text-2xl text-white py-2 px-10 rounded-full shadow-md shadow-gray-600  hover:opacity-[90%] active:opacity-[50%] uppercase self-center">
+          {loading ? "LOading..." : "Update"}
         </button>
+        <p className=" text-sm font-semibold text-red-700  cursor-pointer text-center">
+          {error ? error : " "}
+        </p>
+        <p className=" text-sm font-semibold text-green-700  cursor-pointer text-center">
+          {updateSuccess ? "Profile updated successfully!" : " "}
+        </p>
       </form>
       <div className=" max-w-lg mx-auto flex justify-between mt-5 sm:px-0 px-16">
         <span className=" text-sm font-semibold text-red-700  cursor-pointer">
