@@ -7,6 +7,7 @@ import SignIn from "./pages/SignIn";
 import Profile from "./pages/Profile";
 import Signup from "./pages/Signup";
 import Privateroute from "./components/Privaterou";
+import Listingpage from "./pages/Listingpage";
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
             <Route path="/about" element={<About />} />
             <Route element={<Privateroute />}>
               <Route path="/profile" element={<Profile />} />
+              <Route path="/listing" element={<Listingpage />} />
             </Route>
           </Route>
           <Route path="/signin" element={<SignIn />} />

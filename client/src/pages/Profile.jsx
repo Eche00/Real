@@ -17,6 +17,8 @@ import {
   signOutUserStart,
   signOutUserFaliure,
 } from "../redux/user/userSlice";
+import { Link } from "react-router-dom";
+import { AddToPhotosOutlined } from "@mui/icons-material";
 
 function Profile() {
   const { currentUser, loading, error } = useSelector((state) => state.user);
@@ -182,6 +184,7 @@ function Profile() {
           className=" w-fit bg-blue-500 text-2xl text-white py-2 px-10 rounded-full shadow-md shadow-gray-600  hover:opacity-[90%] active:opacity-[50%] uppercase self-center">
           {loading ? "LOading..." : "Update"}
         </button>
+
         <p className=" text-sm font-semibold text-red-700  cursor-pointer text-center">
           {error ? error : " "}
         </p>
@@ -189,6 +192,13 @@ function Profile() {
           {updateSuccess ? "Profile updated successfully!" : " "}
         </p>
       </form>
+      <div className="flex justify-center ">
+        <Link
+          to="/listing"
+          className=" w-fit border border-blue-500 text-2xl text-blue-500 py-2 px-10 rounded-full shadow-md shadow-gray-600  hover:text-white hover:bg-blue-500 duration-100 active:opacity-[50%] uppercase self-center object-center">
+          Create listing <AddToPhotosOutlined />
+        </Link>
+      </div>
       <div className=" max-w-lg mx-auto flex justify-between mt-5 sm:px-0 px-16">
         <span
           onClick={handleDeleteUser}
