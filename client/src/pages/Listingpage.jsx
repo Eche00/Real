@@ -133,14 +133,14 @@ function Listingpage() {
         },
         body: JSON.stringify({ ...formD, userRef: currentUser._id }),
       });
-      const data = res.json();
+      const data = await res.json();
       setLoading(false);
       if (data.success === false) {
         setError(data.message);
       }
+      navigate(`/listing/${data._id}`);
       console.log(data);
-
-      console.log(data._id);
+      console.log(data.name);
     } catch (error) {
       setError(error.message);
       setLoading(false);
