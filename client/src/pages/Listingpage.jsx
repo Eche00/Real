@@ -139,8 +139,6 @@ function Listingpage() {
         setError(data.message);
       }
       navigate(`/listing/${data._id}`);
-      console.log(data);
-      console.log(data.name);
     } catch (error) {
       setError(error.message);
       setLoading(false);
