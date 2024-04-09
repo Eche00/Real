@@ -18,7 +18,7 @@ import {
   signOutUserFaliure,
 } from "../redux/user/userSlice";
 import { Link } from "react-router-dom";
-import { AddToPhotosOutlined } from "@mui/icons-material";
+import { AddToPhotosOutlined, ArrowDownward } from "@mui/icons-material";
 
 function Profile() {
   const { currentUser, loading, error } = useSelector((state) => state.user);
@@ -26,6 +26,9 @@ function Profile() {
   const [file, setFile] = useState(undefined);
   const [filePercentage, setFilePercentage] = useState(0);
   const [fileError, setFileError] = useState(false);
+  const [listingError, setListingError] = useState(false);
+  const [userListing, setUserListing] = useState([]);
+
   const [formD, setFormD] = useState({});
   const dispatch = useDispatch();
   const [updateSuccess, setUpdateSuccess] = useState(false);
@@ -125,6 +128,22 @@ function Profile() {
       dispatch(deleteeUserFaliure(error.message));
     }
   };
+
+  const handleShowListings = async () => {
+    try {
+      setListingError(false);
+      const res = await fetch(`/api/user/listings/${currentUser._id}`);
+      const data = await res.json();
+      if (data.success === false) {
+        setListingError(true);
+
+        return;
+      }
+      setUserListing(data);
+    } catch (error) {
+      setListingError(true);
+    }
+  };
   return (
     <div className=" max-w-full mx-auto">
       <h1 className=" text-center text-3xl font-semibold my-7">Profile</h1>
@@ -210,6 +229,43 @@ function Profile() {
           className=" text-sm font-semibold text-red-700  cursor-pointer ">
           Sign Out
         </span>
+      </div>
+      <div className=" max-w-4xl   mx-auto flex flex-col items-center mt-5  my-10">
+        <button
+          onClick={handleShowListings}
+          className=" w-fit  text-sm text-green-500 py-2 px-10 rounded-full font-bold  hover:opacity-[90%] active:opacity-[50%] uppercase self-center">
+          show listings <ArrowDownward fontSize="" />
+        </button>
+        <p className=" text-sm font-semibold text-red-700  cursor-pointer text-center">
+          {listingError ? "Error showing listing" : " "}
+        </p>
+
+        <div className="flex  flex-wrap justify-between gap-y-5 mt-10 sm:px-0 px-10">
+          {userListing &&
+            userListing.length > 0 &&
+            userListing.map((listing) => (
+              <div key={listing._id} className="">
+                <Link to={`/listing/${listing._id}`}>
+                  <img
+                    className="w-40 h-40  rounded-md object-cover "
+                    src={listing.imageUrls[0]}
+                    alt="listing cover"
+                  />
+                </Link>
+                <p className=" truncate font-semibold hover:underline mt-1 mb-4 sm:text-center  w-24 overflow-hidden">
+                  {listing.name}
+                </p>
+                <div className="flex flex-wrap justify-between items-start px-2  ">
+                  <button className="text-sm w-16 text-white bg-red-600 rounded-md">
+                    Delete
+                  </button>
+                  <button className="text-sm w-16 text-white bg-green-600 rounded-md">
+                    Edit
+                  </button>
+                </div>
+              </div>
+            ))}
+        </div>
       </div>
     </div>
   );
