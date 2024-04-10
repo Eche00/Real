@@ -32,7 +32,6 @@ function Profile() {
   const [formD, setFormD] = useState({});
   const dispatch = useDispatch();
   const [updateSuccess, setUpdateSuccess] = useState(false);
-  console.log(formD);
 
   // file firebase
   //  allow read;
