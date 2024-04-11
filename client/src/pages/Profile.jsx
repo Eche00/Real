@@ -143,6 +143,23 @@ function Profile() {
       setListingError(true);
     }
   };
+  const handleDeleteListing = async (listingId) => {
+    try {
+      const res = await fetch(`/api/listing/delete/${listingId}`, {
+        method: "DELETE",
+      });
+      const data = await res.json();
+      if (data.success === false) {
+        console.log(data.message);
+        return;
+      }
+      setUserListing((prev) =>
+        prev.filter((listing) => listing._id !== listingId)
+      );
+    } catch (error) {
+      console.log(error.message);
+    }
+  };
   return (
     <div className=" max-w-full mx-auto">
       <h1 className=" text-center text-3xl font-semibold my-7">Profile</h1>
@@ -238,8 +255,13 @@ function Profile() {
         <p className=" text-sm font-semibold text-red-700  cursor-pointer text-center">
           {listingError ? "Error showing listing" : " "}
         </p>
-
-        <div className="flex  flex-wrap justify-between gap-y-5 mt-10 sm:px-0 px-10">
+        <h3 className=" text-center text-[16px] font-semibold my-2">
+          Your Listings{" "}
+          <span className=" bg-blue-500 rounded-md p-2 text-white">
+            ({userListing.length})
+          </span>
+        </h3>
+        <div className="flex  flex-wrap justify-between gap-y-5 mt-10 sm:px-0 px-10 gap-2">
           {userListing &&
             userListing.length > 0 &&
             userListing.map((listing) => (
@@ -255,7 +277,9 @@ function Profile() {
                   {listing.name}
                 </p>
                 <div className="flex flex-wrap justify-between items-start px-2  ">
-                  <button className="text-sm w-16 text-white bg-red-600 rounded-md">
+                  <button
+                    onClick={() => handleDeleteListing(listing._id)}
+                    className="text-sm w-16 text-white bg-red-600 rounded-md">
                     Delete
                   </button>
                   <button className="text-sm w-16 text-white bg-green-600 rounded-md">
