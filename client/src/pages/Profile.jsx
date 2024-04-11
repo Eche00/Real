@@ -282,9 +282,11 @@ function Profile() {
                     className="text-sm w-16 text-white bg-red-600 rounded-md">
                     Delete
                   </button>
-                  <button className="text-sm w-16 text-white bg-green-600 rounded-md">
-                    Edit
-                  </button>
+                  <Link to={`/updatelisting/${listing._id}`}>
+                    <button className="text-sm w-16 text-white bg-green-600 rounded-md">
+                      Edit
+                    </button>
+                  </Link>
                 </div>
               </div>
             ))}
