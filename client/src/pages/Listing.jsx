@@ -4,8 +4,10 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import SwiperCore from "swiper";
 import { Navigation } from "swiper/modules";
 import "swiper/css/bundle";
-import { Done, Share } from "@mui/icons-material";
-
+import { Bathtub, Done, LocationOn, Share } from "@mui/icons-material";
+import HotelIcon from "@mui/icons-material/Hotel";
+import LocalParkingIcon from "@mui/icons-material/LocalParking";
+import AddHomeWorkIcon from "@mui/icons-material/AddHomeWork";
 function Listing() {
   SwiperCore.use([Navigation]);
   const [listing, setListing] = useState(null);
@@ -76,6 +78,64 @@ function Listing() {
               }, 2000);
             }}>
             {copied ? <Done /> : <Share />}
+          </div>
+          <div className="flex flex-col max-w-7xl mx-auto p-3 my-7 gap-6">
+            <p className=" text-2xl font-semibold">
+              <span className=" uppercase"> {listing.name} </span>- ${""}
+              {listing.offer
+                ? listing.discountPrice.toLocaleString("en-US")
+                : listing.regularPrice.toLocaleString("en-US")}{" "}
+              {listing.type === "rent" && "/ month"}
+            </p>
+            <p className=" flex items-center mt-6 gap-2 text-slate-600 my-2 text-sm">
+              <span className=" bg-blue-500 text-sm p-2  rounded-full text-white">
+                <LocationOn />
+              </span>
+              <span>{listing.address}</span>
+            </p>
+            <div className="flex gap-4">
+              <p className=" bg-red-900 w-full max-w-[200px] text-white text-center p-1 rounded-md">
+                {listing.type === "rent" ? "For Rent" : "For Sale"}
+              </p>
+              <p className=" bg-blue-500 w-full max-w-[200px] text-white text-center p-1 rounded-md">
+                {listing.offer &&
+                  `$${+listing.regularPrice - +listing.discountPrice}`}
+              </p>
+            </div>
+            <div>
+              <p className="text-slate800">
+                <span className=" font-semibold text-black">Description -</span>
+                {listing.description}.
+              </p>
+              <ul className=" flex flex-wrap gap-2 my-7">
+                <li className=" bg-blue-500 w-full max-w-[200px] text-white text-center p-1 rounded-md flex gap-2 justify-center items-center">
+                  <Bathtub />
+                  <span>
+                    {listing.bedrooms > 1
+                      ? `${listing.bedrooms} Bedrooms`
+                      : `${listing.bedrooms} Bedroom`}
+                  </span>
+                </li>
+                <li className=" bg-blue-500 w-full max-w-[200px] text-white text-center p-1 rounded-md flex gap-2 justify-center items-center">
+                  <HotelIcon />
+                  <span>
+                    {listing.bathrooms > 1
+                      ? `${listing.bathrooms} Bathrooms`
+                      : `${listing.bathrooms} Bathroom`}
+                  </span>
+                </li>
+                <li className=" bg-blue-500 w-full max-w-[200px] text-white text-center p-1 rounded-md flex gap-2 justify-center items-center">
+                  <LocalParkingIcon />
+                  <span>{listing.parking ? "Parking" : "No Parking"}</span>
+                </li>
+                <li className=" bg-blue-500 w-full max-w-[200px] text-white text-center p-1 rounded-md flex gap-2 justify-center items-center ">
+                  <AddHomeWorkIcon />
+                  <span>
+                    {listing.furnished ? "Furnished" : "Not Furnished"}
+                  </span>
+                </li>
+              </ul>
+            </div>
           </div>
         </>
       )}
