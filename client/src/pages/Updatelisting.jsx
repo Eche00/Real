@@ -153,7 +153,7 @@ function updateListing() {
       if (data.success === false) {
         setError(data.message);
       }
-      navigate(`/listing/${data._id}`);
+      navigate(`/listingcreated/${data._id}`);
     } catch (error) {
       setError(error.message);
       setLoading(false);
