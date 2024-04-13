@@ -19,7 +19,6 @@ function Listing() {
   const [error, setError] = useState(false);
   const [copied, setCopied] = useState(false);
   const [contact, setContact] = useState(false);
-  console.log(listing);
 
   const params = useParams();
   useEffect(() => {
