@@ -1,13 +1,29 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { ArrowBack, ExitToApp, Search } from "@mui/icons-material";
-import { Link, NavLink } from "react-router-dom";
+import { Link, NavLink, useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { imageListClasses } from "@mui/material";
 
 function Header() {
   let [dropDown, setDropDown] = useState(false);
   const { currentUser } = useSelector((state) => state.user);
+  const [searchTerm, setSearchTerm] = useState("");
+  const navigate = useNavigate();
 
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    const urlParams = new URLSearchParams(window.location.search);
+    urlParams.set("searchTerm", searchTerm);
+    const searchQuery = urlParams.toString();
+    navigate(`/search?${searchQuery}`);
+  };
+  useEffect(() => {
+    const urlParams = new URLSearchParams(window.location.search);
+    const searchTermrUrl = urlParams.get("searchTerm");
+    if (searchTermrUrl) {
+      setSearchTerm(searchTermrUrl);
+    }
+  }, [location.search]);
   return (
     <div className=" w-[100%] shadow-sm shadow-blue-500 py-3 sm:px-0 px-5">
       <header className="  max-w-7xl mx-auto flex justify-between items-center">
@@ -17,18 +33,22 @@ function Header() {
             State
           </span>
         </div>
-        <div className=" flex justify-center items-end w-[100%]">
+        <form
+          onSubmit={handleSubmit}
+          className=" flex justify-center items-end w-[100%]">
           <section className=" sm:w-[60%] w-[80%]  border border-blue-500 flex items-center rounded-full  overflow-hidden  py-2">
             {" "}
             <input
               type="text"
               className="  flex-grow py-2 w-[100%] outline-none px-5"
+              value={searchTerm}
+              onChange={(e) => setSearchTerm(e.target.value)}
             />{" "}
             <button className="  bg-blue-500  sm:mr-2 mr-3 px-5 sm:py-1 py-2 rounded-full  cursor-pointer text-white">
               <Search />
             </button>
           </section>
-        </div>
+        </form>
         <button
           className="sm:hidden text-3xl relative"
           onClick={() => setDropDown(!dropDown)}>
