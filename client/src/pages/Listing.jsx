@@ -8,12 +8,18 @@ import { Bathtub, Done, LocationOn, Share } from "@mui/icons-material";
 import HotelIcon from "@mui/icons-material/Hotel";
 import LocalParkingIcon from "@mui/icons-material/LocalParking";
 import AddHomeWorkIcon from "@mui/icons-material/AddHomeWork";
+import { useSelector } from "react-redux";
+import Contact from "./Contact";
+
 function Listing() {
   SwiperCore.use([Navigation]);
+  const { currentUser } = useSelector((state) => state.user);
   const [listing, setListing] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(false);
   const [copied, setCopied] = useState(false);
+  const [contact, setContact] = useState(false);
+  console.log(listing);
 
   const params = useParams();
   useEffect(() => {
@@ -60,7 +66,7 @@ function Listing() {
             {listing.imageUrls.map((url) => (
               <SwiperSlide key={url}>
                 <div
-                  className=" h-[550px] "
+                  className=" h-[550px]"
                   style={{
                     background: `url(${url}) center no-repeat`,
                     backgroundSize: "cover",
@@ -97,10 +103,12 @@ function Listing() {
               <p className=" bg-red-900 w-full max-w-[200px] text-white text-center p-1 rounded-md">
                 {listing.type === "rent" ? "For Rent" : "For Sale"}
               </p>
-              <p className=" bg-blue-500 w-full max-w-[200px] text-white text-center p-1 rounded-md">
-                {listing.offer &&
-                  `$${+listing.regularPrice - +listing.discountPrice}`}
-              </p>
+
+              {listing.offer && (
+                <p className=" bg-blue-500 w-full max-w-[200px] text-white text-center p-1 rounded-md">
+                  ${+listing.regularPrice - +listing.discountPrice}{" "}
+                </p>
+              )}
             </div>
             <div>
               <p className="text-slate800">
@@ -135,6 +143,19 @@ function Listing() {
                   </span>
                 </li>
               </ul>
+              <div className="my-10 ">
+                {currentUser &&
+                  listing.userRef !== currentUser._id &&
+                  !contact && (
+                    <button
+                      onClick={() => setContact(true)}
+                      type="button"
+                      className=" w-full  text-2xl  py-2 px-5 rounded-md  shadow-md shadow-gray-600  text-white bg-blue-500 hover:opacity-90 active:opacity-[50%] uppercase self-center object-center ">
+                      Contact Owner
+                    </button>
+                  )}
+                {contact && <Contact listing={listing} />}
+              </div>
             </div>
           </div>
         </>
