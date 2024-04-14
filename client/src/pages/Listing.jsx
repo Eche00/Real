@@ -106,6 +106,7 @@ function Listing() {
               {listing.offer && (
                 <p className=" bg-blue-500 w-full max-w-[200px] text-white text-center p-1 rounded-md">
                   ${+listing.regularPrice - +listing.discountPrice}{" "}
+                  <span className=" text-xs">OFF</span>
                 </p>
               )}
             </div>

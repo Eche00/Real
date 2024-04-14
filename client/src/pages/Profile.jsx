@@ -266,7 +266,7 @@ function Profile() {
             userListing.length > 0 &&
             userListing.map((listing) => (
               <div key={listing._id} className="">
-                <Link to={`/listing/${listing._id}`}>
+                <Link to={`/listingcreated/${listing._id}`}>
                   <img
                     className="w-40 h-40  rounded-md object-cover "
                     src={listing.imageUrls[0]}

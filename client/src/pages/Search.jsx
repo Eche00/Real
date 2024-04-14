@@ -1,6 +1,7 @@
 import { set } from "mongoose";
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import Listingitem from "./Listingitem";
 
 function Search() {
   const navigate = useNavigate();
@@ -19,7 +20,7 @@ function Search() {
 
   useEffect(() => {
     const urlParams = new URLSearchParams(location.search);
-    const searchTermUrl = urlParams.get("searchTerm");
+    const searchTermFromUrl = urlParams.get("searchTerm");
     const typeFromUrl = urlParams.get("type");
     const parkingFromUrl = urlParams.get("parking");
     const furnishedFromUrl = urlParams.get("furnished");
@@ -28,17 +29,16 @@ function Search() {
     const orderFromUrl = urlParams.get("order");
 
     if (
-      searchTermUrl ||
+      searchTermFromUrl ||
       typeFromUrl ||
       parkingFromUrl ||
       furnishedFromUrl ||
       offerFromUrl ||
-      sort ||
       sortFromUrl ||
       orderFromUrl
     ) {
       setSidebarData({
-        searchTerm: searchTermUrl || "",
+        searchTerm: searchTermFromUrl || "",
         type: typeFromUrl || "all",
         parking: parkingFromUrl === "true" ? true : false,
         furnished: furnishedFromUrl === "true" ? true : false,
@@ -189,6 +189,7 @@ function Search() {
               defaultValue={"created_at_desc"}
               id="sort_order"
               className=" bg-blue-500 text-white p-1 rounded-md outline-none px-2 text-sm font-semibold">
+              <option value="">Default</option>
               <option value="regularPrice_desc">Price high to low</option>
               <option value="regularPrice_asc">Price low to high</option>
               <option value="createdAt_desc">Latest</option>
@@ -200,10 +201,27 @@ function Search() {
           </button>
         </form>
       </div>
-      <div>
+      <div className=" flex-1 ">
         <h1 className="text-3xl font-semibold border-b p-3 text-slate-700 mt-5">
           Listing result:
         </h1>
+        <div className=" p-7 flex flex-wrap gap-5">
+          {!loading && listings.length === 0 && (
+            <p className="text-xl font-semibold  p-3 text-slate-700 mt-5">
+              No listing found!
+            </p>
+          )}
+          {loading && (
+            <h1 className="   text-2xl  text-blue-500 hover:opacity-90 active:opacity-[50%] uppercase text-center mx-auto">
+              Loading...
+            </h1>
+          )}
+          {!loading &&
+            listings &&
+            listings.map((listing) => (
+              <Listingitem key={listing._id} listing={listing} />
+            ))}
+        </div>
       </div>
     </div>
   );
