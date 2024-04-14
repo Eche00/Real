@@ -100,6 +100,7 @@ function Search() {
     const searchQuery = urlParams.toString();
     navigate(`/search?${searchQuery}`);
   };
+  console.log(sidebarData);
   return (
     <div className=" flex  flex-col md:flex-row">
       <div className="p-7 border-b-2 md:border-r-2 md:min-h-screen">
