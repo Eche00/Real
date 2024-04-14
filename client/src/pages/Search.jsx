@@ -2,6 +2,7 @@ import { set } from "mongoose";
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Listingitem from "./Listingitem";
+import { ArrowDownward } from "@mui/icons-material";
 
 function Search() {
   const navigate = useNavigate();
@@ -16,6 +17,8 @@ function Search() {
   });
   const [loading, setLoading] = useState(false);
   const [listings, setListings] = useState([]);
+  const [showmore, setShowmore] = useState(false);
+
   console.log(listings);
 
   useEffect(() => {
@@ -49,9 +52,16 @@ function Search() {
     }
     const fetchListings = async () => {
       setLoading(true);
+      setShowmore(false);
       const searchQuery = urlParams.toString();
       const res = await fetch(`/api/listing/get?${searchQuery}`);
       const data = await res.json();
+      if (data.length > 8) {
+        setShowmore(true);
+      } else {
+        setShowmore(false);
+      }
+
       setListings(data);
       setLoading(false);
     };
@@ -101,6 +111,19 @@ function Search() {
     navigate(`/search?${searchQuery}`);
   };
 
+  const showMoreB = async () => {
+    const numOfListing = listings.length;
+    const startIndex = numOfListing;
+    const urlParams = new URLSearchParams(location.search);
+    urlParams.set("startIndex", startIndex);
+    const searchQuery = urlParams.toString();
+    const res = await fetch(`/api/listing/get?${searchQuery}`);
+    const data = await res.json();
+    if (data.length < 9) {
+      setShowmore(false);
+    }
+    setListings([...listings, ...data]);
+  };
   return (
     <div className=" flex  flex-col md:flex-row">
       <div className="p-7 border-b-2 md:border-r-2 md:min-h-screen">
@@ -223,6 +246,13 @@ function Search() {
               <Listingitem key={listing._id} listing={listing} />
             ))}
         </div>
+        {showmore && (
+          <button
+            className="text-sm font-semibold  p-2 m-7 text-white bg-blue-500  rounded-md flex items-center"
+            onClick={showMoreB}>
+            Show More <ArrowDownward fontSize="small" />
+          </button>
+        )}
       </div>
     </div>
   );
