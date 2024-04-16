@@ -25,7 +25,7 @@ function Header() {
     }
   }, [location.search]);
   return (
-    <div className=" w-[100%] shadow-sm shadow-blue-500 py-3 sm:px-0 px-5">
+    <div className=" w-[100%] shadow-sm shadow-blue-500 py-3 sm:px-0 px-5  bg-slate-100">
       <header className="  max-w-7xl mx-auto flex justify-between items-center">
         <div className=" text-3xl text-blue-500 font-extrabold flex  items-baseline">
           𝕏
@@ -55,7 +55,7 @@ function Header() {
           &#9776;
         </button>
         {dropDown && (
-          <div className=" absolute bottom-0 left-0 right-0 top-0 bg-black bg-opacity-[80%] sm:hidden flex">
+          <div className=" absolute bottom-0 left-0 right-0 top-0 bg-black bg-opacity-[80%] sm:hidden flex z-10">
             <div className=" absolute right-0 top-0 bottom-0 w-[40%] bg-slate-200">
               <nav className=" flex flex-col py-0 justify-center text-sm  font-bold ">
                 <NavLink
@@ -80,7 +80,7 @@ function Header() {
                     About
                   </p>
                 </NavLink>
-                <Link to="/profile">
+                <Link to="/profile" onClick={() => setDropDown(!dropDown)}>
                   {currentUser ? (
                     <div className="flex  justify-between items-center border  border-x-0 border-gray-400 cursor-pointer   w-[100%] p-3">
                       <p>Profile</p>
