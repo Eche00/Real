@@ -203,7 +203,7 @@ function About() {
                 ABOUT US
               </Link>
               <Link to={`/profile`} className="hover:opacity-80">
-                PROFILE
+                PROFILE/LOGIN
               </Link>
             </nav>
             <div className="flex flex-col sm:gap-2">
