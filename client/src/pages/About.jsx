@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { dev, heroimg1 } from "../assets";
+import { dev, heroimg1, heroimg3, heroimg4 } from "../assets";
 import { GitHub, Instagram, LinkOutlined } from "@mui/icons-material";
 import { Link } from "react-router-dom";
 
@@ -56,7 +56,7 @@ function About() {
           <div className="  flex-1 flex sm:flex-row flex-col   gap-10">
             <img
               className="sm:w-[20%] w-full h-[400px] object-cover sm:rounded-t-full  rounded-md hover:scale-[102%] translate-scale duration-300"
-              src={heroimg1}
+              src={heroimg3}
               alt=""
             />
             <div className=" flex-1 flex-col h-fit my-auto">
@@ -80,7 +80,7 @@ function About() {
           <div className="  flex-1 flex sm:flex-row  gap-10 flex-col">
             <img
               className="sm:w-[20%] w-full h-[400px] object-cover sm:rounded-t-full  rounded-md hover:scale-[102%] translate-scale duration-300"
-              src={heroimg1}
+              src={heroimg4}
               alt=""
             />
             <div className=" flex-1 flex-col h-fit my-auto">
@@ -128,21 +128,25 @@ function About() {
                 </p>
               </div>
               <ul className=" text-xs text-white bg-blue-500 p-2 rounded-md font-semibold flex items-center justify-between gap-4">
-                <li className=" text-xl"> 𝕏</li>
+                <li className=" text-xl">
+                  <a href="https://x.com/Eche_codes?t=Wab7izpdS7-ewMqBV6TsVA&s=09">
+                    𝕏
+                  </a>
+                </li>
                 <li>
-                  <a href="">
+                  <a href="https://github.com/Eche00">
                     <GitHub fontSize="small" />
                   </a>
                 </li>
                 <li>
                   {" "}
-                  <a href="">
+                  <a href="https://portfolio-two-liard-34.vercel.app/">
                     <LinkOutlined fontSize="small" />
                   </a>
                 </li>
                 <li>
                   {" "}
-                  <a href="">
+                  <a href="https://www.instagram.com/xeche_codes?igsh=dHdhdm80MWRsdTd2">
                     <Instagram fontSize="small" />
                   </a>
                 </li>
