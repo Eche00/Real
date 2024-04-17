@@ -104,7 +104,7 @@ function Home() {
                 _OFFER
               </span>
             </h1>
-            <div className=" sm:text-3xl sm:p-10 text-xl shadow-md shadow-blue-500 rounded-xl   rounded-tl-full rounded-br-full text-center ">
+            <div className=" sm:text-3xl sm:p-10 text-xl shadow-md shadow-blue-500 rounded-xl   sm:rounded-tr-full sm:rounded-bl-full text-center overflow-scroll hover:scale-[102%] transition-scale duration-300">
               <p className=" p-2 text-slate-600 font-semibold  ">
                 We offers a one-stop shop for all your property needs, from
                 finding your dream home to managing your rentals.
@@ -121,7 +121,7 @@ function Home() {
                 _PROVIDE
               </span>
             </h1>
-            <div className=" sm:text-3xl sm:p-10 text-xl shadow-md shadow-blue-500 rounded-xl   rounded-tr-full rounded-bl-full text-center ">
+            <div className=" sm:text-3xl sm:p-10 text-xl shadow-md shadow-blue-500 rounded-xl   sm:rounded-tr-full sm:rounded-bl-full text-center overflow-scroll hover:scale-[102%] transition-scale duration-300">
               <p className=" p-2 text-slate-600 font-semibold  ">
                 We provides a convenient platform to connect with realtors,
                 schedule viewings, and get expert advice on the market trends
