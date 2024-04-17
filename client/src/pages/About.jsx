@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { heroimg1 } from "../assets";
+import { dev, heroimg1 } from "../assets";
 import { GitHub, Instagram, LinkOutlined } from "@mui/icons-material";
 import { Link } from "react-router-dom";
 
@@ -114,7 +114,7 @@ function About() {
           <div className=" flex flex-col shadow-md hover:shadow-lg  translate-shadow overflow-hidden gap-4 rounded-lg w-full sm:w-[330px] ">
             <img
               className=" h-[320px] sm:h-[220px] w-full object-cover hover:scale-[105%] translate-scale duration-300"
-              src={heroimg1}
+              src={dev}
               alt=""
             />
             <div className=" p-2">
