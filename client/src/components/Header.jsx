@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { ArrowBack, ExitToApp, Search } from "@mui/icons-material";
+import { ArrowBack, ExitToApp, Language, Search } from "@mui/icons-material";
 import { Link, NavLink, useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { imageListClasses } from "@mui/material";
@@ -15,7 +15,9 @@ function Header() {
     const urlParams = new URLSearchParams(window.location.search);
     urlParams.set("searchTerm", searchTerm);
     const searchQuery = urlParams.toString();
-    navigate(`/search?${searchQuery}`);
+    navigate(
+      `/search?searchTerm=&type=sale&parking=false&furnished=false&offer=false&sort=created_at&order=desc`
+    );
   };
   useEffect(() => {
     const urlParams = new URLSearchParams(window.location.search);
@@ -25,35 +27,23 @@ function Header() {
     }
   }, [location.search]);
   return (
-    <div className=" w-[100%] shadow-sm shadow-blue-500 py-3 sm:px-0 px-5  bg-slate-100">
-      <header className="  max-w-7xl mx-auto flex justify-between items-center">
-        <div className=" text-3xl text-blue-500 font-extrabold flex  items-baseline">
+    <div className=" w-[100%] py-5 sm:px-0 px-5  bg-[#FFFFFF]">
+      <header className="  max-w-[90%] mx-auto flex justify-between items-center">
+        <div className=" text-[24px]  font-[700] text-blue-500 flex  items-baseline gap-[10px]">
           𝕏
-          <span className=" decoration-slice text-lg  font-bold text-black sm:inline-block hidden ">
-            State
-          </span>
+          <span className=" decoration-slice  text-black ">State</span>
         </div>
-        <form
-          onSubmit={handleSubmit}
-          className=" flex justify-center items-end w-[100%]">
-          <section className=" sm:w-[60%] w-[80%]  border border-blue-500 flex items-center rounded-full  overflow-hidden  py-2">
-            {" "}
-            <input
-              type="text"
-              className="  flex-grow py-2 w-[100%] outline-none px-5"
-              value={searchTerm}
-              onChange={(e) => setSearchTerm(e.target.value)}
-            />{" "}
-            <button className="  bg-blue-500  sm:mr-2 mr-3 px-5 sm:py-1 py-2 rounded-full  cursor-pointer text-white">
-              <Search />
-            </button>
+
+        <div className="flex items-center gap-[40px]">
+          <section className=" sm:hidden flex">
+            <Language />
           </section>
-        </form>
-        <button
-          className="sm:hidden text-3xl relative"
-          onClick={() => setDropDown(!dropDown)}>
-          &#9776;
-        </button>
+          <button
+            className="sm:hidden text-3xl relative"
+            onClick={() => setDropDown(!dropDown)}>
+            &#9776;
+          </button>
+        </div>
         {dropDown && (
           <div className=" absolute bottom-0 left-0 right-0 top-0 bg-black bg-opacity-[80%] sm:hidden flex z-10">
             <div className=" absolute right-0 top-0 bottom-0 w-[40%] bg-slate-200">
@@ -70,6 +60,17 @@ function Header() {
                   </p>
                 </NavLink>
                 <NavLink
+                  to="/search"
+                  className={({ isActive }) =>
+                    isActive ? "text-blue-500" : ""
+                  }>
+                  <p
+                    className=" cursor-pointer   w-[100%] p-3"
+                    onClick={() => setDropDown(!dropDown)}>
+                    Properties
+                  </p>
+                </NavLink>
+                <NavLink
                   to="/about"
                   className={({ isActive }) =>
                     isActive ? "text-blue-500" : ""
@@ -78,6 +79,13 @@ function Header() {
                     className=" cursor-pointer   w-[100%] p-3"
                     onClick={() => setDropDown(!dropDown)}>
                     About
+                  </p>
+                </NavLink>
+                <NavLink onClick={handleSubmit}>
+                  <p
+                    className=" cursor-pointer   w-[100%] p-3"
+                    onClick={() => setDropDown(!dropDown)}>
+                    Sales
                   </p>
                 </NavLink>
                 <Link to="/profile" onClick={() => setDropDown(!dropDown)}>
@@ -106,12 +114,19 @@ function Header() {
           </div>
         )}
 
-        <nav className=" sm:flex items-center text-sm gap-3 font-bold hidden">
+        <nav className=" sm:flex items-center text-[14px] gap-[40px] font-[600] hidden  py-[10px]">
           <NavLink
             to="/"
             className={({ isActive }) => (isActive ? "text-blue-500" : "")}>
             <p className="  hover:border-b  border-blue-500  cursor-pointer">
               Home
+            </p>
+          </NavLink>
+          <NavLink
+            to="/search"
+            className={({ isActive }) => (isActive ? "text-blue-500" : "")}>
+            <p className="  hover:border-b  border-blue-500  cursor-pointer">
+              Properties
             </p>
           </NavLink>
           <NavLink
@@ -121,19 +136,33 @@ function Header() {
               About
             </p>
           </NavLink>
-          <Link to="/profile">
-            {currentUser ? (
-              <img
-                className=" rounded-full h-7 w-14 object-cover"
-                src={currentUser.avatar}
-                alt="profile"
-              />
-            ) : (
-              <button className="  bg-blue-500  mr-2  px-5 py-2  rounded-full text-white cursor-pointer">
-                SignUp
-              </button>
-            )}
-          </Link>
+          <NavLink onClick={handleSubmit}>
+            <p className="  hover:border-b  border-blue-500  cursor-pointer">
+              Sales
+            </p>
+          </NavLink>
+
+          <div>
+            <Language />
+          </div>
+          <div className=" flex items-center gap-[20px]">
+            <Link to="/profile">
+              {currentUser ? (
+                <img
+                  className=" rounded-full h-7 w-14 object-cover"
+                  src={currentUser.avatar}
+                  alt="profile"
+                />
+              ) : (
+                <button className="    mr-2  px-[17px] py-[12px]  rounded-[9px] text-black cursor-pointer bg-[#D6E6FF] font-bold text-[14px]">
+                  Register/ sign in
+                </button>
+              )}
+            </Link>
+            <button className="    mr-2  px-[17px] py-[12px]  rounded-[9px] text-white cursor-pointer bg-[#0061FF] font-bold">
+              Contact us
+            </button>
+          </div>
         </nav>
       </header>
     </div>

@@ -4,32 +4,30 @@ import { Link } from "react-router-dom";
 
 function Listingitem({ listing }) {
   return (
-    <div className=" flex flex-col shadow-md hover:shadow-lg  translate-shadow overflow-hidden gap-4 rounded-lg w-full sm:w-[330px]">
-      <Link to={`/listingcreated/${listing._id}`}>
-        <img
-          src={
-            listing.imageUrls[0] ||
-            "https://assets-global.website-files.com/63d44c419a1c6e6917394dc3/650365ee090280c45a4a692a_house-g60ddee039_1280.jpg"
-          }
-          alt="listing cover"
-          className=" h-[320px] sm:h-[220px] w-full object-cover hover:scale-[105%] translate-scale duration-300"
-        />
-        <div className="px-3 py-3 flex flex-col gap-2 mt-5">
-          <p className=" text-lg font-semibold text-slate-700 truncate">
-            {listing.name}
-          </p>
-          <div>
-            <p className=" flex items-center  gap-1 text-slate-600 truncate  text-sm">
+    <div className=" flex flex-col shadow-md hover:shadow-lg  translate-shadow overflow-hidden gap-[9px] rounded-[20px] w-fit sm:w-[330px] bg-[#D6E6FF]">
+      <img
+        src={
+          listing.imageUrls[0] ||
+          "https://assets-global.website-files.com/63d44c419a1c6e6917394dc3/650365ee090280c45a4a692a_house-g60ddee039_1280.jpg"
+        }
+        alt="listing cover"
+        className=" h-[220px] sm:h-[220px] w-full object-cover hover:scale-[98%] translate-scale duration-300 rounded-[20px]"
+      />
+      <div className="px-[20px] pb-[20px] flex flex-col gap-2 mt-5">
+        <p className=" md:text-[20px] font-[600] text-[10px]">{listing.name}</p>
+        <div>
+          {/* <p className=" flex items-center  gap-1 text-slate-600 truncate  text-sm">
               <span className=" text-blue-500">
                 <LocationOn fontSize="small" />
               </span>
               <span>{listing.address}</span>
-            </p>
-          </div>
-          <p className=" text-sm text-gray-600 line-clamp-2 font-semibold ">
-            {listing.description}
-          </p>
-          <p className=" text-slate-500 mt-2 font-semibold text-sm  flex items-center">
+            </p> */}
+        </div>
+        <p className=" text-[12px] text-[#000000] line-clamp-2 font-[400]  h-[40px]">
+          {listing.description}
+        </p>
+        <div className="flex justify-between">
+          <p className=" text-[24px] text-[#000000]   font-[600] text-sm  flex items-center">
             $
             {listing.offer
               ? listing.discountPrice.toLocaleString("en-US")
@@ -38,21 +36,13 @@ function Listingitem({ listing }) {
               <span className=" text-slate-700 text-xs"> / month</span>
             )}
           </p>
-          <p className=" text-xs text-white bg-blue-500 p-2 rounded-md font-semibold flex items-center gap-4">
-            <span>
-              {listing.bedrooms > 1
-                ? `${listing.bedrooms} Beds`
-                : `${listing.bedrooms} Bed`}
-            </span>{" "}
-            <span>
-              {" "}
-              {listing.bathrooms > 1
-                ? `${listing.bathrooms} Baths`
-                : `${listing.bathrooms} Bath`}
-            </span>
-          </p>
+          <Link
+            to={`/listingcreated/${listing._id}`}
+            className=" text-[14px] text-white bg-[#0061FF] py-[10px] px-[30px] rounded-[12px]  font-[600] ">
+            <button>See more</button>{" "}
+          </Link>
         </div>
-      </Link>
+      </div>
     </div>
   );
 }

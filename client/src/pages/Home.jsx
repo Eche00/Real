@@ -5,49 +5,24 @@ import "swiper/css/bundle";
 import { Navigation } from "swiper/modules";
 import { Link } from "react-router-dom";
 import Listingitem from "./Listingitem";
-import { heroimg1, heroimg2 } from "../assets";
+import { heroimg1, heroimg2, HeroImage } from "../assets";
 import { HomeOutlined } from "@mui/icons-material";
-
+import ShieldIcon from "@mui/icons-material/Shield";
+import SmsIcon from "@mui/icons-material/Sms";
+import MilitaryTechIcon from "@mui/icons-material/MilitaryTech";
+import PersonPinIcon from "@mui/icons-material/PersonPin";
 function Home() {
   SwiperCore.use([Navigation]);
-  const [offerListings, setOfferListings] = useState([]);
-  const [rentListings, setRentListings] = useState([]);
-  const [saleListings, setSaleListings] = useState([]);
-  console.log(saleListings);
+  const [listings, setListings] = useState([]);
 
   useEffect(() => {
     // fetching rent data
 
     const fetchingListing = async () => {
       try {
-        const res = await fetch(`/api/listing/get?offer=true&limit=4`);
+        const res = await fetch(`/api/listing/get?limit=3`);
         const data = await res.json();
-        setOfferListings(data);
-        fetchRentListings();
-      } catch (error) {
-        console.log(error);
-      }
-    };
-    // fetching rent data
-
-    const fetchRentListings = async () => {
-      try {
-        const res = await fetch(`/api/listing/get?type=rent&limit=4`);
-        const data = await res.json();
-        setRentListings(data);
-        fetchSaleListings();
-      } catch (error) {
-        console.log(error);
-      }
-    };
-
-    // fetchingsale data
-
-    const fetchSaleListings = async () => {
-      try {
-        const res = await fetch(`/api/listing/get?type=sale&limit=4`);
-        const data = await res.json();
-        setSaleListings(data);
+        setListings(data);
       } catch (error) {
         console.log(error);
       }
@@ -59,152 +34,74 @@ function Home() {
   return (
     <div>
       {/* top */}
-      <div className=" bg-slate-100 my-1 text-center">
-        <span className=" bg-blue-500 text-sm font-bold  p-1 rounded-md">
-          {" "}
-          𝕏
-        </span>
-      </div>
+
       {/* slider */}
-      <Swiper navigation>
-        {offerListings &&
-          offerListings.length > 1 &&
-          offerListings.map((listing) => (
-            <SwiperSlide key={listing._id}>
-              <img
-                className=" h-[500px] object-cover w-full"
-                src={listing.imageUrls[0]}
-                alt=""
-              />
-              <p>
-                <h1 className=" text-4xl sm:text-7xl text-blue-500 font-bold my-5 absolute top-40 left-[10%] stroke stroke-black">
-                  WELCOME TO <br />
-                  <span className=" text-slate-200 text-4xl sm:text-[80px] sm:px-[200px]">
-                    𝕏_State
-                  </span>
-                </h1>
-              </p>
-            </SwiperSlide>
-          ))}
-      </Swiper>
+      <div className=" w-[90%] mx-auto h-fit relative">
+        <div className="absolute top-0 w-full bottom-0 bg-gradient-to-b from-[#619DFF91] to-transparent rounded-[23px] overflow-hidden"></div>
+        <img
+          className=" w-[100%]  md:h-[520px] h-[155px]   sm:object-full rounded-[23px]"
+          src={HeroImage}
+          alt=""
+        />
+        <h2 className="md:text-[40px] text-[12px] font-[700] text-center md:left-[500px] left-[70px] tmd:op-[50px] top-[30px] absolute">
+          Discover the perfect home that fits your <br /> lifestyle and dreams.
+        </h2>
+      </div>
+      {/* sub hero  */}
+
+      <div className="py-[50px]">
+        <section>
+          <p className="text-[#00000085] sm:text-[16px] text-[12px] font-[700] sm:py-[10px] text-center">
+            Trusted by 185+ countries
+          </p>
+        </section>
+        <section></section>
+      </div>
       {/* sec */}
-      <div className="max-w-[1400px] flex flex-col mx-auto my-20  p-5 gap-10">
+      <div className="flex flex-col mx-auto my-20  p-5  bg-[#D6E6FF]">
         {/* sec 1 */}
 
-        <div className="  flex-1 flex sm:flex-row flex-col  justify-between gap-5">
-          <img
-            className="sm:w-[40%] w-full h-[600px] object-cover sm:rounded-tr-[50%] rounded-tr-[40%] sm:rounded-bl-[0%] rounded-bl-[40%] rounded-md hover:scale-[102%] translate-scale duration-300"
-            src={heroimg1}
-            alt=""
-          />
-          <div className=" flex-1 flex-col h-fit my-auto">
-            <h1 className=" text-2xl sm:text-7xl text-blue-500 font-bold my-5 ">
-              What we
-              <span className=" text-slate-600 text-2xl sm:text-6xl">
-                _OFFER
-              </span>
-            </h1>
-            <div className=" sm:text-3xl sm:p-10 text-xl shadow-md shadow-blue-500 rounded-xl   sm:rounded-tr-full sm:rounded-bl-full text-center overflow-scroll hover:scale-[102%] transition-scale duration-300">
-              <p className=" p-2 text-slate-600 font-semibold  ">
-                We offers a one-stop shop for all your property needs, from
-                finding your dream home to managing your rentals.
+        <h1 className=" font-[700] text-[32px] text-[#000000] text-center">
+          Why choose us ?
+        </h1>
+        <p className=" font-[500] text-[13px] text-[#000000] text-center">
+          Every design is thoughtfully crafted to reflect unique personalities
+          and styles.
+        </p>
+
+        <div className="max-w-[1006px] flex justify-between"></div>
+      </div>
+
+      {/* listing options */}
+      <div className=" max-w-[1500px] mx-auto p-3 flex flex-col gap-8 my-10">
+        {listings && listings.length > 0 && (
+          <div className="  flex flex-col items-center justify-center">
+            <div className=" my-3">
+              <h1 className=" font-[700] text-[32px] text-[#000000] text-center">
+                Available properties
+              </h1>
+              <p className=" font-[500] md:text-[13px] text-[10px] text-[#000000] text-center md:w-[697px] w-[90%] mx-auto">
+                Explore a range of available properties tailored to various
+                needs, offering diverse options for buyers and renters.n is
+                thoughtfully crafted to reflect unique personalities and styles.
               </p>
             </div>
-          </div>
-        </div>
-        {/* sec 2 */}
-        <div className="  flex-1 flex sm:flex-row flex-col-reverse  justify-between gap-5">
-          <div className=" flex-1 flex-col h-fit my-auto">
-            <h1 className=" text-2xl sm:text-7xl text-blue-500 font-bold my-5 ">
-              What we{" "}
-              <span className=" text-slate-600 text-2xl sm:text-6xl">
-                _PROVIDE
-              </span>
-            </h1>
-            <div className=" sm:text-3xl sm:p-10 text-xl shadow-md shadow-blue-500 rounded-xl   sm:rounded-tr-full sm:rounded-bl-full text-center overflow-scroll hover:scale-[102%] transition-scale duration-300">
-              <p className=" p-2 text-slate-600 font-semibold  ">
-                We provides a convenient platform to connect with realtors,
-                schedule viewings, and get expert advice on the market trends
-                and conditions.
-              </p>
-            </div>
-          </div>
-          <img
-            className="sm:w-[40%] w-full h-[600px] object-cover sm:rounded-tl-[50%] rounded-tl-[40%] sm:rounded-br-[0%] rounded-br-[40%] rounded-md hover:scale-[102%] translate-scale duration-300"
-            src={heroimg2}
-            alt=""
-          />
-        </div>
-      </div>
-
-      {/* listing options */}
-      <div className=" max-w-[1500px] mx-auto p-3 flex flex-col gap-8 my-10">
-        {offerListings && offerListings.length > 0 && (
-          <div>
-            <div className=" my-3">
-              <h2 className=" text-2xl text-slate-600 font-semibold">
-                Recent offers
-              </h2>
-              <Link
-                to={`/search?offer=true`}
-                className=" text-sm text-blue-500 font-bold hover:underline">
-                Show more offers
-              </Link>
-            </div>
-            <div className=" flex flex-wrap  gap-4">
-              {offerListings.map((listing) => (
+            <div className=" flex flex-wrap w-[90%]   justify-center my-[50px] gap-[50px]">
+              {listings.map((listing) => (
                 <Listingitem listing={listing} key={listing._id} />
               ))}
             </div>
+
+            <Link
+              to={`/search`}
+              className=" text-sm text-[#0061FF] font-bold hover:underline text-center underline mx-auto w-[90%]">
+              see more available properties
+            </Link>
           </div>
         )}
       </div>
       {/* listing options */}
 
-      <div className=" max-w-[1500px] mx-auto p-3 flex flex-col gap-8 my-10">
-        {rentListings && rentListings.length > 0 && (
-          <div>
-            <div className=" my-3">
-              <h2 className=" text-2xl text-slate-600 font-semibold">
-                Recent places to rent
-              </h2>
-              <Link
-                to={`/search?type=rent`}
-                className=" text-sm text-blue-500 font-bold hover:underline">
-                Show more offers
-              </Link>
-            </div>
-            <div className=" flex flex-wrap gap-4">
-              {rentListings.map((listing) => (
-                <Listingitem listing={listing} key={listing._id} />
-              ))}
-            </div>
-          </div>
-        )}
-      </div>
-      {/* listing options */}
-
-      <div className=" max-w-[1500px] mx-auto p-3 flex flex-col gap-8 my-10">
-        {saleListings && saleListings.length > 0 && (
-          <div>
-            <div className=" my-3">
-              <h2 className=" text-2xl text-slate-600 font-semibold">
-                Recent places for sale
-              </h2>
-              <Link
-                to={`/search?type=sale`}
-                className=" text-sm text-blue-500 font-bold hover:underline">
-                Show more offers
-              </Link>
-            </div>
-            <div className=" flex flex-wrap gap-4">
-              {saleListings.map((listing) => (
-                <Listingitem listing={listing} key={listing._id} />
-              ))}
-            </div>
-          </div>
-        )}
-      </div>
       {/*footer*/}
       <div>
         <footer className="bg-blue-500 mt-[50px] text-xl py-[100px] ">
