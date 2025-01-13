@@ -154,7 +154,7 @@ function Header() {
                   alt="profile"
                 />
               ) : (
-                <button className="    mr-2  px-[17px] py-[12px]  rounded-[9px] text-black cursor-pointer bg-[#D6E6FF] font-bold text-[14px]">
+                <button className="    mr-2  px-[17px] py-[12px]  rounded-[9px] text-black cursor-pointer bg-[#D6E6FF] font-bold text-[14px] border-[0.5px] border-[#0061FF]">
                   Register/ sign in
                 </button>
               )}

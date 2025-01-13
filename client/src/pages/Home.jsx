@@ -69,7 +69,47 @@ function Home() {
           and styles.
         </p>
 
-        <div className="max-w-[1006px] flex justify-between"></div>
+        <div className="max-w-[80%] mx-auto flex  py-[30px] gap-[40px] flex-wrap items-center justify-center">
+          <section className="flex flex-col gap-[5px]  items-center justify-center p-[25px] bg-white border-[0.5px] border-[#0061FF] rounded-[12px]">
+            <span className="md:text-[18px] text-[12px] font-[600]">Trust</span>
+            <p className=" md:h-[74px] md:w-[188px] h-[36px] w-[141px] md:text-[14px] text-[10px] font-[300] text-center">
+              {" "}
+              A reliable real estate partner builds your confidence with
+              transparent services.
+            </p>
+          </section>
+          <section className="flex flex-col gap-[5px]  items-center justify-center p-[25px] bg-white border-[0.5px] border-[#0061FF] rounded-[12px]">
+            <span></span>
+            <span className="md:text-[18px] text-[12px] font-[600]">
+              Communication
+            </span>
+            <p className=" md:h-[74px] md:w-[188px] h-[36px] w-[141px] md:text-[14px] text-[10px] font-[300] text-center">
+              {" "}
+              Clear and open communication ensures clients stay informed at
+              every step.
+            </p>
+          </section>
+          <section className="flex flex-col gap-[5px]  items-center justify-center p-[25px] bg-white border-[0.5px] border-[#0061FF] rounded-[12px]">
+            <span className="md:text-[18px] text-[12px] font-[600]">
+              High-quality
+            </span>
+            <p className=" md:h-[74px] md:w-[188px] h-[36px] w-[141px] md:text-[14px] text-[10px] font-[300] text-center">
+              {" "}
+              Quality in real estate represents properties built with durable
+              materials.
+            </p>
+          </section>
+          <section className="flex flex-col gap-[5px]  items-center justify-center p-[25px] bg-white border-[0.5px] border-[#0061FF] rounded-[12px]">
+            <span className="md:text-[18px] text-[12px] font-[600]">
+              Personalization
+            </span>
+            <p className=" md:h-[74px] md:w-[188px] h-[36px] w-[141px] md:text-[14px] text-[10px] font-[300] text-center">
+              {" "}
+              Customized property recommendations in real estate cater to
+              individual preferences.
+            </p>
+          </section>
+        </div>
       </div>
 
       {/* listing options */}
@@ -104,8 +144,8 @@ function Home() {
 
       {/*footer*/}
       <div>
-        <footer className="bg-blue-500 mt-[50px] text-xl py-[100px] ">
-          <section className=" max-w-4xl mx-auto py-4 flex flex-col sm:flex-row sm:justify-between font-bold text-white sm:px-0 px-3">
+        <footer className="border-[2px] border-[#00000040] mt-[50px]  ">
+          {/* <section className=" max-w-4xl mx-auto py-4 flex flex-col sm:flex-row sm:justify-between font-bold text-white sm:px-0 px-3">
             <address>
               X REAL ESTATE WEB APP, Inc. <br />
               555 Astro Way <br />
@@ -135,6 +175,28 @@ function Home() {
 
               <p className="text-right">All Rights Reserved</p>
             </div>
+          </section> */}
+
+          <section>
+            <div className=" border-r-[2px] border-[#00000040] w-fit h-full p-[100px] text-[14px] font-[700]">
+              <address>
+                <div className=" text-[24px] font-extrabold text-blue-500 flex  items-baseline gap-[5px]">
+                  𝕏
+                  <span className="   text-black  text-[16px] font-[700]">
+                    {" "}
+                    XREAL ESTATE WEB APP, Inc.
+                  </span>
+                </div>
+                555 Astro Way <br />
+                Fairfield, New Jersey 12345-5555 <br />
+                <a href="mailto:echeze956@gmail.com">
+                  Email: echeeze956@gmail.com
+                </a>
+                <br />
+                <a href="tel:+2347041729402">Phone: (234) 704-172-9402</a>
+              </address>
+            </div>
+            <div></div>
           </section>
         </footer>
       </div>
