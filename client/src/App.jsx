@@ -11,10 +11,11 @@ import Listingpage from "./pages/Listingpage";
 import Updatelisting from "./pages/Updatelisting";
 import Listing from "./pages/Listing";
 import Search from "./pages/Search";
+import "./styles.css";
 
 function App() {
   return (
-    <div>
+    <div className="quicksand">
       <Router>
         <Routes>
           <Route path="/" element={<DisplayHeader />}>

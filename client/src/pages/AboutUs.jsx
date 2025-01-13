@@ -3,7 +3,7 @@ import { AbtImg } from "../assets";
 
 function AboutUs() {
   return (
-    <div className=" bg-[#D6E6FF]">
+    <div className=" bg-[#D6E6FF] quicksand">
       <section className=" md:w-[95%] w-[70%] mx-auto py-[40px] flex gap-[30px] md:flex-row flex-col">
         <h1 className=" md:text-[40px] text-[24px] font-[700] flex flex-col gap-[20px] text-center md:hidden ">
           About us

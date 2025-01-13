@@ -1,17 +1,12 @@
 import React, { useEffect, useState } from "react";
-import { Swiper, SwiperSlide } from "swiper/react";
 import SwiperCore from "swiper";
 import "swiper/css/bundle";
 import { Navigation } from "swiper/modules";
 import { Link } from "react-router-dom";
 import Listingitem from "./Listingitem";
-import { heroimg1, heroimg2, HeroImage } from "../assets";
-import { HomeOutlined } from "@mui/icons-material";
-import ShieldIcon from "@mui/icons-material/Shield";
-import SmsIcon from "@mui/icons-material/Sms";
-import MilitaryTechIcon from "@mui/icons-material/MilitaryTech";
-import PersonPinIcon from "@mui/icons-material/PersonPin";
+import { HeroImage } from "../assets";
 import AboutUs from "./AboutUs";
+import "../styles.css";
 function Home() {
   SwiperCore.use([Navigation]);
   const [listings, setListings] = useState([]);
@@ -33,11 +28,11 @@ function Home() {
   }, []);
 
   return (
-    <div>
+    <div className="quicksand">
       {/* top */}
 
       {/* slider */}
-      <div className=" w-[90%] mx-auto h-fit relative">
+      <div className=" w-[90%] mx-auto h-fit relative quicksand">
         <div className="absolute top-0 w-full bottom-0 bg-gradient-to-b from-[#619DFF91] to-transparent rounded-[23px] overflow-hidden"></div>
         <img
           className=" w-[100%]  md:h-[520px] h-[155px]   sm:object-full rounded-[23px]"
@@ -62,7 +57,7 @@ function Home() {
       <div className="flex flex-col mx-auto my-20  p-5  bg-[#D6E6FF]">
         {/* sec 1 */}
 
-        <h1 className=" font-[700] text-[32px] text-[#000000] text-center">
+        <h1 className=" font-[700] text-[32px] text-[#000000] text-center quicksand">
           Why choose us ?
         </h1>
         <p className=" font-[500] text-[13px] text-[#000000] text-center">
