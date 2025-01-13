@@ -1,5 +1,5 @@
 import React from "react";
-import { HeroImage } from "../assets";
+import { AbtImg } from "../assets";
 
 function AboutUs() {
   return (
@@ -10,7 +10,7 @@ function AboutUs() {
         </h1>
         <img
           className="md:w-[600px] md:h-[600px] h-[235px] object-cover md:rounded-[20px] rounded-[8px]"
-          src={HeroImage}
+          src={AbtImg}
           alt=""
         />
 
