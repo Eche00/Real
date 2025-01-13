@@ -144,7 +144,7 @@ function Home() {
 
       {/*footer*/}
       <div>
-        <footer className="border-[2px] border-[#00000040] mt-[50px]  ">
+        <footer className="border-[2px] border-[#00000040] mt-[50px]   ">
           {/* <section className=" max-w-4xl mx-auto py-4 flex flex-col sm:flex-row sm:justify-between font-bold text-white sm:px-0 px-3">
             <address>
               X REAL ESTATE WEB APP, Inc. <br />
@@ -177,8 +177,8 @@ function Home() {
             </div>
           </section> */}
 
-          <section>
-            <div className=" border-r-[2px] border-[#00000040] w-fit h-full p-[100px] text-[14px] font-[700]">
+          <section className="flex md:flex-row flex-col">
+            <div className=" md:border-r-[2px]  border-[#00000040] md:w-fit  h-full md:py-[100px] py-[50px] md:px-[100px] text-[14px] font-[700] flex justify-center items-center w-full">
               <address>
                 <div className=" text-[24px] font-extrabold text-blue-500 flex  items-baseline gap-[5px]">
                   𝕏
@@ -196,7 +196,40 @@ function Home() {
                 <a href="tel:+2347041729402">Phone: (234) 704-172-9402</a>
               </address>
             </div>
-            <div></div>
+
+            {/* second part  */}
+            <div className=" sm:flex grid grid-cols-2 md:gap-0 gap-[20px]  items-start justify-between md:w-[50%] mx-auto md:text-[15px] text-[15px] font-[700] md:py-[100px]">
+              <section className="flex flex-col gap-[17px]">
+                <p className="text-[#0061FF]">Services</p>
+                <ul className=" flex flex-col gap-[10px] font-[500] text-[12px]">
+                  <li>Rental</li>
+                  <li>sales</li>
+                </ul>
+              </section>
+              <section className="flex flex-col gap-[17px]">
+                <p className="text-[#0061FF]">About</p>
+                <ul className=" flex flex-col gap-[10px] font-[500] text-[12px]">
+                  <li>Agent</li>
+                  <li>Awards</li>
+                  <li>Meet our team</li>
+                </ul>
+              </section>
+              <section className="flex flex-col gap-[17px]">
+                <p className="text-[#0061FF]">Copyright © 2024</p>
+                <ul className=" flex flex-col gap-[10px] font-[500] text-[12px]">
+                  <li>All rights reserved</li>
+                  <li>@Eche_codes and </li>
+                  <li>@theinyangeno</li>
+                </ul>
+              </section>
+              <section className="flex flex-col gap-[17px]">
+                <p className="text-[#0061FF]">Follow Us</p>
+                <ul className=" flex items-center justify-center gap-[5px]">
+                  <li>Rental</li>
+                  <li>sales</li>
+                </ul>
+              </section>
+            </div>
           </section>
         </footer>
       </div>
