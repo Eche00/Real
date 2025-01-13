@@ -166,7 +166,7 @@ function Profile() {
 
       <form
         onSubmit={handleSubmit}
-        className=" flex flex-col gap-5 w-[60%] mx-auto ">
+        className=" flex flex-col gap-5 md:w-[40%] w-[60%] mx-auto ">
         <input
           type="file"
           onChange={(e) => setFile(e.target.files[0])}
