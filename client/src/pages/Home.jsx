@@ -11,6 +11,7 @@ import ShieldIcon from "@mui/icons-material/Shield";
 import SmsIcon from "@mui/icons-material/Sms";
 import MilitaryTechIcon from "@mui/icons-material/MilitaryTech";
 import PersonPinIcon from "@mui/icons-material/PersonPin";
+import AboutUs from "./AboutUs";
 function Home() {
   SwiperCore.use([Navigation]);
   const [listings, setListings] = useState([]);
@@ -140,8 +141,8 @@ function Home() {
           </div>
         )}
       </div>
-      {/* listing options */}
-
+      {/* about us */}
+      <AboutUs />
       {/*footer*/}
       <div>
         <footer className="border-[2px] border-[#00000040] mt-[50px]   ">

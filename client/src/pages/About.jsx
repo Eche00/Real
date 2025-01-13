@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { dev, heroimg1, heroimg3, heroimg4 } from "../assets";
 import { GitHub, Instagram, LinkOutlined } from "@mui/icons-material";
 import { Link } from "react-router-dom";
+import AboutUs from "./AboutUs";
 
 function About() {
   const [message, setMessage] = useState("");
@@ -11,12 +12,8 @@ function About() {
   return (
     <div>
       {/*top*/}
+      <AboutUs />
       <div className=" relative">
-        <img
-          className=" h-[250px] object-cover w-full opacity-70"
-          src={heroimg1}
-          alt=""
-        />
         <h1 className=" text-4xl sm:text-6xl text-blue-600 font-bold my-5 absolute -bottom-10 sm:left-[10%] left-5 stroke stroke-black font-serif">
           About Us
           <span className=" text-slate-700 "> 𝕏_State</span>
