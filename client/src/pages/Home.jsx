@@ -44,9 +44,9 @@ function Home() {
           src={HeroImage}
           alt=""
         />
-        <h2 className="md:text-[40px] text-[12px] font-[700] text-center md:left-[500px] left-[70px] tmd:op-[50px] top-[30px] absolute">
+        {/* <h2 className="md:text-[40px] text-[12px] font-[700] text-center md:left-[500px] left-[70px] tmd:op-[50px] top-[30px] absolute">
           Discover the perfect home that fits your <br /> lifestyle and dreams.
-        </h2>
+        </h2> */}
       </div>
       {/* sub hero  */}
 
