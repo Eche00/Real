@@ -4,7 +4,19 @@ import "swiper/css/bundle";
 import { Navigation } from "swiper/modules";
 import { Link } from "react-router-dom";
 import Listingitem from "./Listingitem";
-import { HeroImage } from "../assets";
+import {
+  HeroImage,
+  amazon,
+  bs,
+  google,
+  lock,
+  message,
+  micro,
+  star,
+  tesla,
+  trust,
+  wal,
+} from "../assets";
 import AboutUs from "./AboutUs";
 import "../styles.css";
 function Home() {
@@ -45,28 +57,63 @@ function Home() {
       </div>
       {/* sub hero  */}
 
-      <div className="py-[50px]">
+      <div className="md:py-[50px] py-[20px]">
         <section>
-          <p className="text-[#00000085] sm:text-[16px] text-[12px] font-[700] sm:py-[10px] text-center">
+          <p className="text-[#00000085] sm:text-[16px] text-[12px] font-[700] sm:py-[20px] text-center">
             Trusted by 185+ countries
           </p>
         </section>
-        <section></section>
+        <section className="flex flex-wrap justify-center md:gap-[70px] gap-[10px] w-[80%] mx-auto items-center ">
+          <img
+            className="md:w-[140px] object-cover md:h-[] w-[70px] h-[]"
+            src={google}
+            alt=""
+          />
+          <img
+            className="md:w-[140px] object-cover md:h-[] w-[70px] h-[]"
+            src={amazon}
+            alt=""
+          />
+          <img
+            className="md:w-[140px] object-cover md:h-[] w-[70px] h-[]"
+            src={wal}
+            alt=""
+          />
+          <img
+            className="md:w-[140px] object-cover md:h-[] w-[70px] h-[]"
+            src={micro}
+            alt=""
+          />
+          <img
+            className="md:w-[140px] object-cover md:h-[] w-[70px] h-[]"
+            src={tesla}
+            alt=""
+          />
+          <img
+            className="md:w-[130px] object-cover  md:h-[] w-[50px] h-[]"
+            src={bs}
+            alt=""
+          />
+        </section>
       </div>
       {/* sec */}
-      <div className="flex flex-col mx-auto my-20  p-5  bg-[#D6E6FF]">
+      <div className="flex flex-col mx-auto my-20  md:p-5  bg-[#D6E6FF] py-5 items-center">
         {/* sec 1 */}
 
-        <h1 className=" font-[700] text-[32px] text-[#000000] text-center quicksand">
+        <h1 className=" font-[700] text-[32px] text-[#000000] text-center quicksand ">
           Why choose us ?
         </h1>
-        <p className=" font-[500] text-[13px] text-[#000000] text-center">
+        <p className=" font-[500] text-[13px] text-[#000000] text-center md:w-full w-[250px]">
           Every design is thoughtfully crafted to reflect unique personalities
           and styles.
         </p>
 
-        <div className="max-w-[80%] mx-auto flex  py-[30px] gap-[40px] flex-wrap items-center justify-center">
-          <section className="flex flex-col gap-[5px]  items-center justify-center p-[25px] bg-white border-[0.5px] border-[#0061FF] rounded-[12px]">
+        <div className="md:max-w-[80%] w-full md:mx-auto flex  py-[30px] md:gap-[40px] gap-[20px] flex-wrap items-center justify-center">
+          <section className="flex flex-col gap-[5px]  items-center justify-center md:p-[25px] p-[15px] bg-white border-[0.5px] border-[#0061FF] rounded-[12px]">
+            <span className=" md:p-[20px] p-[10px] bg-[#D6E6FF] rounded-full overflow-hidden">
+              <img className="md:w-[25px] w-[15px] " src={trust} alt="" />
+            </span>
+
             <span className="md:text-[18px] text-[12px] font-[600]">Trust</span>
             <p className=" md:h-[74px] md:w-[188px] h-[36px] w-[141px] md:text-[14px] text-[10px] font-[300] text-center">
               {" "}
@@ -74,8 +121,10 @@ function Home() {
               transparent services.
             </p>
           </section>
-          <section className="flex flex-col gap-[5px]  items-center justify-center p-[25px] bg-white border-[0.5px] border-[#0061FF] rounded-[12px]">
-            <span></span>
+          <section className="flex flex-col gap-[5px]  items-center justify-center md:p-[25px] p-[15px] bg-white border-[0.5px] border-[#0061FF] rounded-[12px]">
+            <span className=" md:p-[20px] p-[10px] bg-[#D6E6FF] rounded-full overflow-hidden">
+              <img className="md:w-[25px] w-[15px] " src={message} alt="" />
+            </span>
             <span className="md:text-[18px] text-[12px] font-[600]">
               Communication
             </span>
@@ -85,7 +134,10 @@ function Home() {
               every step.
             </p>
           </section>
-          <section className="flex flex-col gap-[5px]  items-center justify-center p-[25px] bg-white border-[0.5px] border-[#0061FF] rounded-[12px]">
+          <section className="flex flex-col gap-[5px]  items-center justify-center md:p-[25px] p-[15px] bg-white border-[0.5px] border-[#0061FF] rounded-[12px]">
+            <span className=" md:p-[20px] p-[10px] bg-[#D6E6FF] rounded-full overflow-hidden">
+              <img className="md:w-[25px] w-[15px] " src={star} alt="" />
+            </span>
             <span className="md:text-[18px] text-[12px] font-[600]">
               High-quality
             </span>
@@ -95,7 +147,10 @@ function Home() {
               materials.
             </p>
           </section>
-          <section className="flex flex-col gap-[5px]  items-center justify-center p-[25px] bg-white border-[0.5px] border-[#0061FF] rounded-[12px]">
+          <section className="flex flex-col gap-[5px]  items-center justify-center md:p-[25px] p-[15px] bg-white border-[0.5px] border-[#0061FF] rounded-[12px]">
+            <span className=" md:p-[20px] p-[10px] bg-[#D6E6FF] rounded-full overflow-hidden">
+              <img className="md:w-[25px] w-[15px] " src={lock} alt="" />
+            </span>
             <span className="md:text-[18px] text-[12px] font-[600]">
               Personalization
             </span>
