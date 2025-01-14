@@ -24,10 +24,10 @@ function AboutUs() {
                 Our mission
               </h2>
               <p className=" md:text-[20px] text-[16px] font-[500] flex flex-col gap-[20px] items-center  md:w-[500px] text-center md:text-start">
-                Lorem ipsum dolor, sit amet consectetur adipisicing elit. Amet
-                vitae ipsa esse, quis illum, omnis libero dolorum dicta quos
-                maxime, atque saepe suscipit porro eligendi molestiae sapiente
-                vel vero. Similique?
+                Our mission is to empower individuals, families, and businesses
+                to find their perfect property and achieve their real estate
+                dreams. We are committed to providing exceptional service,
+                unmatched expertise, and innovative solutions.
               </p>
             </section>
             <section className="flex flex-col gap-[10px] items-start ">
@@ -35,10 +35,10 @@ function AboutUs() {
                 Our vission
               </h2>
               <p className=" md:text-[20px] text-[16px] font-[500] flex flex-col gap-[20px] items-center  md:w-[500px] text-center md:text-start">
-                Lorem ipsum dolor, sit amet consectetur adipisicing elit. Amet
-                vitae ipsa esse, quis illum, omnis libero dolorum dicta quos
-                maxime, atque saepe suscipit porro eligendi molestiae sapiente
-                vel vero. Similique?
+                Our vision is to redefine the real estate experience by setting
+                new standards of excellence, innovation, and sustainability. We
+                aspire to be the trusted partner for our clients and the leading
+                name in the real estate industry.
               </p>
             </section>
           </section>

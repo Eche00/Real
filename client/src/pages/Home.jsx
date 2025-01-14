@@ -115,7 +115,7 @@ function Home() {
             </span>
 
             <span className="md:text-[18px] text-[12px] font-[600]">Trust</span>
-            <p className=" md:h-[74px] md:w-[188px] h-[36px] w-[141px] md:text-[14px] text-[10px] font-[300] text-center">
+            <p className=" md:h-[74px] md:w-[188px] h-[46px] w-[141px] md:text-[14px] text-[10px] font-[300] text-center">
               {" "}
               A reliable real estate partner builds your confidence with
               transparent services.
@@ -128,7 +128,7 @@ function Home() {
             <span className="md:text-[18px] text-[12px] font-[600]">
               Communication
             </span>
-            <p className=" md:h-[74px] md:w-[188px] h-[36px] w-[141px] md:text-[14px] text-[10px] font-[300] text-center">
+            <p className=" md:h-[74px] md:w-[188px] h-[46px] w-[141px] md:text-[14px] text-[10px] font-[300] text-center">
               {" "}
               Clear and open communication ensures clients stay informed at
               every step.
@@ -141,7 +141,7 @@ function Home() {
             <span className="md:text-[18px] text-[12px] font-[600]">
               High-quality
             </span>
-            <p className=" md:h-[74px] md:w-[188px] h-[36px] w-[141px] md:text-[14px] text-[10px] font-[300] text-center">
+            <p className=" md:h-[74px] md:w-[188px] h-[46px] w-[141px] md:text-[14px] text-[10px] font-[300] text-center">
               {" "}
               Quality in real estate represents properties built with durable
               materials.
@@ -154,7 +154,7 @@ function Home() {
             <span className="md:text-[18px] text-[12px] font-[600]">
               Personalization
             </span>
-            <p className=" md:h-[74px] md:w-[188px] h-[36px] w-[141px] md:text-[14px] text-[10px] font-[300] text-center">
+            <p className=" md:h-[74px] md:w-[188px] h-[46px] w-[141px] md:text-[14px] text-[10px] font-[300] text-center">
               {" "}
               Customized property recommendations in real estate cater to
               individual preferences.
