@@ -102,56 +102,87 @@ function About() {
             </div>
           </div>
         </div>
-
-        {/*programmer*/}
-        <div className=" w-full flex flex-col items-center justify-center my-20">
-          <h1 className=" text-4xl  text-blue-500 font-bold my-10  font-serif text-center">
-            Developer
-          </h1>
-          <div className=" flex flex-col shadow-md hover:shadow-lg  translate-shadow overflow-hidden gap-4 rounded-lg w-full sm:w-[330px] ">
-            <img
-              className=" h-[320px] sm:h-[220px] w-full object-cover hover:scale-[105%] translate-scale duration-300"
-              src={dev}
-              alt=""
-            />
-            <div className=" p-2">
-              <div className=" py-3 flex flex-col gap-2 mt-5">
-                <h2 className=" text-lg font-bold text-slate-700 truncate">
-                  𝕏 Eche_codes
-                </h2>
-                <p className=" text-sm font-semibold text-slate-700  font-sans">
-                  Front end Developer with a taste of Back end, HTML, CSS, JS,
-                  REACT, TAILWIND, FIREBASE, NODE.JS
-                </p>
+        <section className="flex flex-wrap w-full  justify-center gap-10 items-stretch">
+          {/*programmer*/}
+          <div className=" w-fit flex flex-col items-center justify-center my-20">
+            <h1 className=" text-4xl  text-blue-500 font-bold my-10  font-serif text-center">
+              Developer
+            </h1>
+            <div className=" flex flex-col shadow-md hover:shadow-lg  translate-shadow overflow-hidden gap-4 rounded-lg w-full sm:w-[330px] ">
+              <img
+                className=" h-[320px] sm:h-[220px] w-full object-cover hover:scale-[105%] translate-scale duration-300"
+                src={dev}
+                alt=""
+              />
+              <div className=" p-2">
+                <div className=" py-3 flex flex-col gap-2 mt-5">
+                  <h2 className=" text-lg font-bold text-slate-700 truncate">
+                    Eche_codes
+                  </h2>
+                  <p className=" text-sm font-semibold text-slate-700  font-sans">
+                    Software Developer Web2|Web3,
+                  </p>
+                </div>
+                <ul className=" text-xs text-white bg-blue-500 p-2 rounded-md font-semibold flex items-center justify-between gap-4">
+                  <li className=" text-xl">
+                    <a href="https://x.com/Eche_codes?t=Wab7izpdS7-ewMqBV6TsVA&s=09">
+                      𝕏
+                    </a>
+                  </li>
+                  <li>
+                    <a href="https://github.com/Eche00">
+                      <GitHub fontSize="small" />
+                    </a>
+                  </li>
+                  <li>
+                    {" "}
+                    <a href="https://portfolio-two-liard-34.vercel.app/">
+                      <LinkOutlined fontSize="small" />
+                    </a>
+                  </li>
+                  <li>
+                    {" "}
+                    <a href="https://www.instagram.com/xeche_codes?igsh=dHdhdm80MWRsdTd2">
+                      <Instagram fontSize="small" />
+                    </a>
+                  </li>
+                </ul>
               </div>
-              <ul className=" text-xs text-white bg-blue-500 p-2 rounded-md font-semibold flex items-center justify-between gap-4">
-                <li className=" text-xl">
-                  <a href="https://x.com/Eche_codes?t=Wab7izpdS7-ewMqBV6TsVA&s=09">
-                    𝕏
-                  </a>
-                </li>
-                <li>
-                  <a href="https://github.com/Eche00">
-                    <GitHub fontSize="small" />
-                  </a>
-                </li>
-                <li>
-                  {" "}
-                  <a href="https://portfolio-two-liard-34.vercel.app/">
-                    <LinkOutlined fontSize="small" />
-                  </a>
-                </li>
-                <li>
-                  {" "}
-                  <a href="https://www.instagram.com/xeche_codes?igsh=dHdhdm80MWRsdTd2">
-                    <Instagram fontSize="small" />
-                  </a>
-                </li>
-              </ul>
             </div>
           </div>
-        </div>
 
+          {/*Designer*/}
+          <div className=" w-fit h-full flex flex-col items-center justify-center my-20">
+            <h1 className=" text-4xl  text-blue-500 font-bold my-10  font-serif text-center">
+              Designer
+            </h1>
+            <div className=" flex flex-col shadow-md hover:shadow-lg  translate-shadow overflow-hidden gap-4 rounded-lg w-full sm:w-[330px] ">
+              <div className="h-[320px] sm:h-[220px]  bg-blue-600 hover:scale-[105%] translate-scale duration-300 flex items-center justify-center">
+                <p className="text-[40px] font-bold text-white">🧃</p>
+              </div>
+              <div className=" p-2">
+                <div className=" py-3 flex flex-col gap-2 mt-5">
+                  <h2 className=" text-lg font-bold text-slate-700 truncate">
+                    Eno🧃
+                  </h2>
+                  <p className=" text-sm font-semibold text-slate-700  font-sans">
+                    UI/UX designer | Web & mobile designer
+                  </p>
+                </div>
+                <ul className=" text-xs text-white bg-blue-500 p-2 rounded-md font-semibold flex items-center justify-center gap-4">
+                  <li className=" text-xl">
+                    <a href="https://x.com/theinyangeno">𝕏</a>
+                  </li>
+                  <li className=" text-xl">
+                    <a href="https://www.pinterest.com/theinyangeno/?invite_code=fafb977d933641048ebd87a6faf26756&sender=970877769577887990">
+                      <LinkOutlined fontSize="small" />
+                    </a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </section>
         {/*contact programmer*/}
         <div className=" sm:w-[70%] mx-auto">
           <p className=" text-2xl text-gray-600 text-[20px]">
